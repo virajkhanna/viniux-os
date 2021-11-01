@@ -7,5 +7,5 @@ void panic() {
 	print_color_string("A System Error occured, causing ViniuxOS to crash. The computer will restart.", RED);
 	vga_index = 320;
 	print_string("Rebooting.....");
-	__asm__("hlt");
+	reboot();
 }
