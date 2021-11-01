@@ -10,5 +10,6 @@ void panic(short err) {
 	print_string(err);
 	vga_index = 400;
 	print_string("Rebooting.....");
+	wait(2000);
 	reboot();
 }
