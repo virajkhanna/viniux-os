@@ -4,4 +4,5 @@ void reboot() {
 
 void shutdown() {
 	__asm__("hlt");
+	print_string("You can turn off the computer now");
 }
