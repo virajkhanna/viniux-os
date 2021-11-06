@@ -5,6 +5,7 @@
 #include "../sys/string.c"
 #include "../sys/function.h"
 #include "util.c"
+#include "../cpu/isr.c"
 
 void kmain(void)
 {
@@ -19,6 +20,9 @@ void kmain(void)
     vga_index = 480;
     print_string("Automatically logged in as root");
     vga_index = 640;
+    print_color_string("Loaded IDT and ISR", GREEN);  
+    isr_install();
+    vga_index = 800;
     print_string("root@viniuxos-pc:~ ");
     return;
 }
