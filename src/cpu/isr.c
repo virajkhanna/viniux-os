@@ -1,5 +1,22 @@
 #include "idt.c"
 
+#define IRQ0 32
+#define IRQ1 33
+#define IRQ2 34
+#define IRQ3 35
+#define IRQ4 36
+#define IRQ5 37
+#define IRQ6 38
+#define IRQ7 39
+#define IRQ8 40
+#define IRQ9 41
+#define IRQ10 42
+#define IRQ11 43
+#define IRQ12 44
+#define IRQ13 45
+#define IRQ14 46
+#define IRQ15 47
+
 typedef struct {
     uint32_t ds;
     uint32_t edi, esi, ebp, esp, ebx, edx, ecx, eax;
@@ -12,6 +29,10 @@ void isr_install();
 void isr_handler(registers_t *r);
 
 typedef void (*isr_t)(registers_t *);
+
+void register_interrupt_handler(u8 n, isr_t handler);
+
+isr_t interrupt_handlers[256];
 
 extern void isr0();
 
@@ -77,6 +98,23 @@ extern void isr30();
 
 extern void isr31();
 
+extern void irq0();
+extern void irq1();
+extern void irq2();
+extern void irq3();
+extern void irq4();
+extern void irq5();
+extern void irq6();
+extern void irq7();
+extern void irq8();
+extern void irq9();
+extern void irq10();
+extern void irq11();
+extern void irq12();
+extern void irq13();
+extern void irq14();
+extern void irq15();
+
 void isr_install() {
     set_idt_gate(0, (uint32_t) isr0);
     set_idt_gate(1, (uint32_t) isr1);
@@ -120,7 +158,24 @@ void isr_install() {
     port_byte_out(0x21, 0x01);
     port_byte_out(0xA1, 0x01);
     port_byte_out(0x21, 0x0);
-    port_byte_out(0xA1, 0x0);
+    port_byte_out(0xA1, 0x0); 
+
+    set_idt_gate(32, (u32)irq0);
+    set_idt_gate(33, (u32)irq1);
+    set_idt_gate(34, (u32)irq2);
+    set_idt_gate(35, (u32)irq3);
+    set_idt_gate(36, (u32)irq4);
+    set_idt_gate(37, (u32)irq5);
+    set_idt_gate(38, (u32)irq6);
+    set_idt_gate(39, (u32)irq7);
+    set_idt_gate(40, (u32)irq8);
+    set_idt_gate(41, (u32)irq9);
+    set_idt_gate(42, (u32)irq10);
+    set_idt_gate(43, (u32)irq11);
+    set_idt_gate(44, (u32)irq12);
+    set_idt_gate(45, (u32)irq13);
+    set_idt_gate(46, (u32)irq14);
+    set_idt_gate(47, (u32)irq15);
 
     load_idt();
 }
@@ -165,4 +220,20 @@ char *exception_messages[] = {
 
 void isr_handler(registers_t *r) {
     print_string("Received interrupt");
+}
+
+void register_interrupt_handler(u8 n, isr_t handler) {
+    interrupt_handlers[n] = handler;
+}
+
+void irq_handler(registers_t *r) {
+    if (interrupt_handlers[r->int_no] != 0) {
+        isr_t handler = interrupt_handlers[r->int_no];
+        handler(r);
+    }
+
+    port_byte_out(0x20, 0x20); 
+    if (r->int_no < 40) {
+        port_byte_out(0xA0, 0x20); 
+    }
 }

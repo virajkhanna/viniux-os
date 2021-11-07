@@ -7,8 +7,13 @@
 #include "util.c"
 #include "../cpu/isr.c"
 
+void user_input(char *input);
+
+#include "../drivers/keyboard.c"
+
 void kmain(void)
 {
+    __asm__("cli");
     clear_screen();
     print_string("ViniuxOS DOS 1.0 - Made by Viraj Khanna");
     vga_index = 80;
@@ -24,5 +29,17 @@ void kmain(void)
     isr_install();
     vga_index = 800;
     print_string("root@viniuxos-pc:~ ");
+    init_keyboard();
     return;
+}
+
+
+void user_input(char *input) {
+    if (strcmp(input, "END") == 0) {
+        print_string("Stopping the CPU. Bye!\n");
+        asm volatile("hlt");
+    }
+    print_string("You said: ");
+    print_string(input);
+    print_string("\n> ");
 }
