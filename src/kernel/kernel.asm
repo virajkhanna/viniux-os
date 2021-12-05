@@ -12,6 +12,7 @@ extern kmain
 
 start:
 	cli
+	sti
 	mov esp, stack_space
 	call kmain ; Jump to the kernel
 	jmp $
