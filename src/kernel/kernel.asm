@@ -8,7 +8,7 @@ section .multiboot
 section .text
 global start
 extern kmain
-%include "cpu/interrupts.asm"
+%include "src/cpu/interrupts.asm"
 
 start:
 	cli
