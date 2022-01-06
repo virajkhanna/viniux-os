@@ -9,7 +9,6 @@ sudo apt install build-essential gcc make grub-common xorriso nasm qemu qemu-sys
 ```
 Then run,
 ```
-cd src
 make
 ```
 ViniuxOS should automatically build and open in a virtual machine.
