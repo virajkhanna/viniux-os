@@ -1,4 +1,4 @@
-all: boot.o kernel.o kernel kernel.iso run clean
+all: boot.o kernel.o kernel kernel.iso clean
 
 boot.o: kernel/kernel.asm
 	nasm -f elf32 kernel/kernel.asm -o boot.o
@@ -12,9 +12,6 @@ kernel: kernel.o boot.o
 	
 kernel.iso: kernel.bin kernel.o boot.o
 	grub-mkrescue -o kernel.iso ../iso
-	
-run: 
-	qemu-system-i386 kernel.iso
 	
 clean:
 	mv *.o ../bin
