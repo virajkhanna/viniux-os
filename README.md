@@ -13,7 +13,7 @@ make
 ```
 ViniuxOS should automatically build and there will be an updated ISO called kernel.iso in the bin directory.
 ### Windows
-It is highly recommended that you build ViniuxOS in WSL if you have Windows. If you do not want to use WSL, then download mingw64 and build ViniuxOS (this is an untested way to build ViniuxOS, if you receive any errors while building ViniuxOS, make a Linux virtual machine or use WSL)
+It is highly recommended that you build ViniuxOS in WSL if you have Windows. Currently there is no way to build ViniuxOS in Windows without WSL. Support for cgywin and msys64 will come soon
 
 ### Features to be implemented
 
