@@ -5,7 +5,7 @@ ViniuxOS is my own operating system. Currently, it does nothing but boot and pri
 ### Linux and WSL
 On Linux and WSL, first install some packages (this is for Debian/Ubuntu based linux distributions)
 ```
-sudo apt install build-essential gcc make grub-common xorriso nasm gcc-multilib
+sudo apt install build-essential gcc make grub-common xorriso nasm gcc-multilib grub-efi
 ```
 Then run,
 ```
