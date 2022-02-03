@@ -30,4 +30,4 @@ It is highly recommended that you build ViniuxOS in WSL if you have Windows. Cur
 ### Features implemented
 
 - Legacy BIOS Boot
-- Print Driver
+- Screen Driver
