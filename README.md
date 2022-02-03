@@ -17,7 +17,6 @@ It is highly recommended that you build ViniuxOS in WSL if you have Windows. Cur
 
 ### Features to be implemented
 
-- UEFI Grub Boot
 - Shell
 - GUI (Maybe..)
 - Shutdown
@@ -25,6 +24,7 @@ It is highly recommended that you build ViniuxOS in WSL if you have Windows. Cur
 
 ### Feature development in progress
 
+- UEFI GRUB Boot
 - Keyboard Driver
 
 ### Features implemented
