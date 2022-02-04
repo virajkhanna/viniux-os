@@ -15,7 +15,7 @@ viniuxos_legacy_bios_v1.0.iso: kernel.bin kernel.o boot.o
 	
 viniuxos_uefi.iso: kernel.bin kernel.o boot.o
 	grub-mkstandalone -O x86_64-efi -o uefiboot/efi/boot/BOOTX64.EFI "boot/grub/grub.cfg=iso/boot/grub/grub.cfg"
-	genisoimage -o uefi-viniuxos.iso uefiboot
+	genisoimage -o uefi-viniuxos.iso -efi-boot uefiboot/EFI/BOOT/BOOTX64.EFI uefiboot
 	
 clean:
 	mv *.o bin
