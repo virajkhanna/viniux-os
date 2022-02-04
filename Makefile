@@ -1,10 +1,4 @@
-all: checkroot boot.o kernel.o kernel viniuxos_legacy_bios_v1.0.iso viniuxos_uefi.iso clean
-
-checkroot:
-ifneq ($(shell id -u), 0)
-	@echo "You must be root to build ViniuxOS."
-	exit 1
-endif
+all: boot.o kernel.o kernel viniuxos_legacy_bios_v1.0.iso viniuxos_uefi.iso clean
 
 boot.o: src/kernel/kernel.asm
 	nasm -f elf32 src/kernel/kernel.asm -o boot.o
@@ -20,8 +14,8 @@ viniuxos_legacy_bios_v1.0.iso: kernel.bin kernel.o boot.o
 	grub-mkrescue -o viniuxos_legacy_bios_v1.0.iso iso
 	
 viniuxos_uefi.iso: kernel.bin kernel.o boot.o
-	chmod +x create_efi_img.sh
-	sudo ./create_efi_img.sh
+	grub-mkstandalone -O x86_64-efi -o uefiboot/efi/boot/BOOTX64.EFI "boot/grub/grub.cfg=iso/boot/grub/grub.cfg"
+	genisoimage -o uefi-viniuxos.iso uefiboot
 	
 clean:
 	mv *.o bin
