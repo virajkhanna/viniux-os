@@ -3,6 +3,12 @@ ViniuxOS is my own operating system. Currently, it does nothing but boot and pri
 
 PLEASE EXPERIMENT WITH VINIUX OS AT YOUR OWN RISK. I AM NOT RESPONSIBLE FOR ANYTHING.
 
+## Requirements
+CPU - Anything 200 mhz or higher
+RAM - 256 MB+
+DISK - 20MB+
+KEYBOARD - IBM P/S 2 or better
+
 ## How to build ViniuxOS
 ### Linux and WSL
 On Linux and WSL, first install some packages (this is for Debian/Ubuntu based linux distributions)
