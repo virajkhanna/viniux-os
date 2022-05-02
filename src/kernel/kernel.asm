@@ -14,6 +14,13 @@ start:
 	cli
 	sti
 	mov esp, stack_space
+	
+	;Enable A20 Gate
+	
+	in al, 0x92
+	or al, 2
+	out 0x92, al
+	
 	call kmain ; Jump to the kernel
 	jmp $
 
