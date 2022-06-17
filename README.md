@@ -4,7 +4,7 @@ ViniuxOS is my own operating system. Currently, it does nothing but boot and pri
 PLEASE EXPERIMENT WITH VINIUX OS AT YOUR OWN RISK. I AM NOT RESPONSIBLE FOR ANYTHING.
 
 ## Requirements
-- CPU - Anything 200 mhz or higher
+- CPU - Anything 200 mhz or higher, 32-bit/64bit, intel cpu
 - RAM - 256 MB+
 - DISK - 20MB+
 - KEYBOARD - IBM P/S 2 or better
@@ -13,7 +13,7 @@ PLEASE EXPERIMENT WITH VINIUX OS AT YOUR OWN RISK. I AM NOT RESPONSIBLE FOR ANYT
 ### Linux and WSL
 On Linux and WSL, first install some packages (this is for Debian/Ubuntu based linux distributions)
 ```
-sudo apt install build-essential gcc make grub-common xorriso nasm gcc-multilib grub-efi genisoimage
+sudo apt install build-essential gcc make grub-common xorriso nasm gcc-multilib grub-efi genisoimage mtools
 ```
 Then run,
 ```
