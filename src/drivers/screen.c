@@ -1,7 +1,10 @@
 #define VGA_ADDRESS 0xB8000
 #define BLACK 0
+#define BLUE 1
 #define GREEN 2
 #define RED 4
+#define BROWN 6
+#define GRAY 7
 #define YELLOW 14
 #define WHITE 15
 
