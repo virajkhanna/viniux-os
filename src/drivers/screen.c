@@ -88,7 +88,22 @@ void clear_screen(void)
     vga_index = 0;
 }
 
-void print_string(char *str)
+void print_string(char *string) {
+    int offset = get_cursor();
+    int i = 0;
+    while (string[i] != 0) {
+        if (string[i] == '\n') {
+            offset = move_offset_to_new_line(offset);
+        } else {
+            set_char_at_video_memory(string[i], offset);
+            offset += 2;
+        }
+        i++;
+    }
+    set_cursor(offset);
+}
+
+/*void print_string_old(char *str)
 {
     unsigned char color = WHITE;
     int index = 0;
@@ -98,4 +113,4 @@ void print_string(char *str)
             vga_index++;
     }
     terminal_buffer = (unsigned short *)VGA_ADDRESS;
-}
+}*/
