@@ -1,14 +1,13 @@
 #include "ports.h"
 
-u8 port_byte_in (u16 port) {
-    u8 result;
+unsigned char port_byte_in(unsigned short port) {
+    unsigned char result;
     __asm__("in %%dx, %%al" : "=a" (result) : "d" (port));
     return result;
 }
 
-void port_byte_out (u16 port, u8 data) {
-
-    __asm__ __volatile__("out %%al, %%dx" : : "a" (data), "d" (port));
+void port_byte_out(unsigned short port, unsigned char data) {
+    __asm__("out %%al, %%dx" : : "a" (data), "d" (port));
 }
 
 u16 port_word_in (u16 port) {
