@@ -37,7 +37,7 @@ int get_cursor() {
 void set_char_at_video_memory(char character, int offset) {
     unsigned char *vidmem = (unsigned char *) VIDEO_ADDRESS;
     vidmem[offset] = character;
-    vidmem[offset + 1] = WHITE_ON_BLACK;
+    vidmem[offset + 1] = WHITE;
 }
 
 int get_row_from_offset(int offset) {
