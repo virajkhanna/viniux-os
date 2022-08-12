@@ -1,3 +1,5 @@
+#include "screen.h"
+
 void set_cursor(int offset) {
     offset /= 2;
     port_byte_out(REG_SCREEN_CTRL, 14);
