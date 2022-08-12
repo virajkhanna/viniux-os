@@ -49,10 +49,6 @@ int scroll_ln(int offset) {
     return offset - 2 * MAX_COLS;
 }
 
-/*
- * TODO:
- * - handle illegal offset (print error message somewhere)
- */
 void print_string(char *string) {
     int offset = get_cursor();
     int i = 0;
