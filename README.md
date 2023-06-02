@@ -4,7 +4,7 @@ ViniuxOS is my own operating system. Currently, it does nothing but boot and pri
 PLEASE EXPERIMENT WITH VINIUX OS AT YOUR OWN RISK. I AM NOT RESPONSIBLE FOR ANYTHING.
 
 ## Requirements
-- CPU - Anything 200 mhz or higher, 32-bit/64bit, intel cpu
+- CPU - Anything 200 mhz or higher, 32-bit/64bit
 - RAM - 256 MB+
 - DISK - 20MB+
 - KEYBOARD - IBM P/S 2 or better
